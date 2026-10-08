@@ -1,0 +1,18 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: monitoolring-frontend:local
+    container_name: monitoolring-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api
+    networks:
+      - monitoolring
+
+networks:
+  monitoolring:
+    name: monitoolring-network
+    external: true
